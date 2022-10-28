@@ -1,0 +1,1 @@
+from pyqt_windows_os_light_dark_theme_window.main import Window
