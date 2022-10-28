@@ -17,7 +17,7 @@ or
 * `allowDetectingTheme(f: bool)` - Allow detecting theme to change the Windows system theme in real-time. True in default.
 
 ## Code Sample
-Note: You don't need this code sample if you <b>cloned</b> this repo, just run the main.py and you can see the fine result. This is for the people who installed this with <b>pip</b>.
+Note: You don't need this code sample if you <b>cloned</b> this repo, just run the main.py and you can see the fine result. This code sample is for the people who installed this with <b>pip</b>.
 ```python
 from PyQt5.QtWidgets import QGridLayout, QPushButton, QApplication
 from pyqt_windows_os_light_dark_theme_window import Window
