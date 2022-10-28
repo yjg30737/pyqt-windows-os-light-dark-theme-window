@@ -4,7 +4,7 @@ from winreg import QueryValueEx, ConnectRegistry, HKEY_CURRENT_USER, OpenKey, KE
 
 from PyQt5.QtWidgets import QWidget, QApplication, QGridLayout, QPushButton
 
-from c import DWMWINDOWATTRIBUTE
+from pyqt_windows_os_light_dark_theme_window.c import DWMWINDOWATTRIBUTE
 
 
 class Window(QWidget):
