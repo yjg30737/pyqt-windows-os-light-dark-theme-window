@@ -1,14 +1,14 @@
 # pyqt-windows-os-light-dark-theme-window
 PyQt windows which detects Windows dark/light theme settings and changes the theme dynamically
 
-<b>This is for Windows only.</b>
+<b>This is for Windows only.</b> I tested this in Windows 11. This app might work in Windows 10 as well.
 
 ## Detailed Description
 This is using Windows `DWMAPI` library, `winreg` for get the window registry's value, `nativeEvent` to change the theme.
 
 As you might know, Windows can change the theme light to dark, or dark to light. This window detects such a thing and apply it to the frame.
 
-You can make it unable to detect the theme if you don't want to change the current window theme accordance with the system theme. See the Method Overview below. 
+You can make it unable to detect the theme if you don't want to change the current window theme accordance with the system theme. See the Method Overview below.
 
 ## Requirements
 * PyQt5
