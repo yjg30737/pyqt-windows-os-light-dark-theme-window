@@ -19,6 +19,10 @@ or
 ## Code Sample
 Note: You don't need this code sample if you <b>cloned</b> this repo, just run the main.py and you can see the fine result.
 ```python
+from PyQt5.QtWidgets import QGridLayout, QPushButton, QApplication
+from pyqt_windows_os_light_dark_theme_window import Window
+
+
 class MainWindow(Window):
     def __init__(self):
         super().__init__()
