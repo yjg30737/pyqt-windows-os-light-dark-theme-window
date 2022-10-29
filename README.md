@@ -18,7 +18,7 @@ You can make it unable to detect the theme if you don't want to change the curre
 
 or
 
-`python -m pip install git+https://github.com/yjg30737/pyqt-windows-os-light-dark-theme-window.git --upgrade` 
+`python -m pip install pyqt-windows-os-light-dark-theme-window --upgrade` 
 
 ## Method Overview
 * `setDarkTheme(f: bool)` - If you want to set Windows theme directly, use this. If you give `True`, dark theme will be set to qt window.
