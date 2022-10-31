@@ -15,9 +15,13 @@ class MainWindow(Window):
         lay = QGridLayout()
         lay.addWidget(btn)
         self.setLayout(lay)
+        self.changedToDark.connect(self.__darkThemeOn)
 
     def __themeToggled(self, f):
         self.setDarkTheme(f)
+
+    def __darkThemeOn(self, f):
+        print(f'Is current theme dark?: {f}')
 
 
 if __name__ == "__main__":

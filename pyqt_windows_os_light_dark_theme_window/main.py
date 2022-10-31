@@ -2,12 +2,14 @@ from ctypes import byref, c_bool, sizeof, windll
 from ctypes.wintypes import BOOL, MSG
 from winreg import QueryValueEx, ConnectRegistry, HKEY_CURRENT_USER, OpenKey, KEY_READ
 
+from PyQt5.QtCore import pyqtSignal
 from PyQt5.QtWidgets import QWidget
 
 from pyqt_windows_os_light_dark_theme_window.c import DWMWINDOWATTRIBUTE
 
 
 class Window(QWidget):
+    changedToDark = pyqtSignal(bool)
     def __init__(self):
         super().__init__()
         # init windows library and get function to handle the Windows theme
@@ -33,6 +35,7 @@ class Window(QWidget):
                 self.__setCurrentWindowsTheme()
         return super().nativeEvent(e, message)
 
+
     # set Windows theme by referring registry key
     def __setCurrentWindowsTheme(self):
         try:
@@ -41,6 +44,7 @@ class Window(QWidget):
             lightThemeValue, regtype = QueryValueEx(root_key, 'AppsUseLightTheme')
             if lightThemeValue == 0 or lightThemeValue == 1:
                 self.__dwmSetWindowAttribute(int(self.winId()), DWMWINDOWATTRIBUTE.DWMWA_USE_IMMERSIVE_DARK_MODE.value, byref(c_bool(lightThemeValue == 0)), sizeof(BOOL))
+                self.changedToDark.emit(lightThemeValue == 0)
             else:
                 raise Exception(f'Unknown value "{lightThemeValue}".')
         except FileNotFoundError:
@@ -52,6 +56,7 @@ class Window(QWidget):
     def setDarkTheme(self, f: bool):
         self.__dwmSetWindowAttribute(int(self.winId()), DWMWINDOWATTRIBUTE.DWMWA_USE_IMMERSIVE_DARK_MODE.value,
                                      byref(c_bool(f)), sizeof(BOOL))
+        self.changedToDark.emit(f)
 
     def isDetectingThemeAllowed(self):
         return self.__detect_theme_flag
