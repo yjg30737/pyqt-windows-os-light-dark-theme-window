@@ -69,8 +69,8 @@ if __name__ == "__main__":
 ## Preview
 Windows light theme (as you expected)
 
-![image](https://user-images.githubusercontent.com/55078043/198483498-00e238c9-0f1b-4782-81a4-6edf2a9be667.png)
+![image](https://user-images.githubusercontent.com/55078043/198911732-adf7c8ee-4e9a-4b39-afd4-eef4acd862be.png)
 
 Windows dark theme
 
-![image](https://user-images.githubusercontent.com/55078043/198484079-b1bef3df-a126-4136-a073-cc17c322eced.png)
+![image](https://user-images.githubusercontent.com/55078043/198911760-71d7b16b-81d9-4df2-ad06-84c8693091f5.png)
