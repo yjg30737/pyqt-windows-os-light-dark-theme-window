@@ -20,16 +20,20 @@ or
 
 `python -m pip install pyqt-windows-os-light-dark-theme-window --upgrade` 
 
-## Method Overview
+## Method/Signal Overview
+### Methods
 * `setDarkTheme(f: bool)` - If you want to set Windows theme directly, use this. If you give `True`, dark theme will be set to qt window.
 * `isDetectingThemeAllowed() -> bool` - Check if detecting theme feature is allowed.
 * `allowDetectingTheme(f: bool)` - Allow detecting theme to change the Windows system theme in real-time. True in default.
+### Signal
+* `changedToDark(bool)` - If theme changed, this signal will be emitted.
 
 ## Code Sample
-Note: You don't need this code sample if you <b>cloned</b> this repo, just run the main.py and you can see the fine result. This code sample is for the people who installed this with <b>pip</b>.
+Note: You don't need this code sample if you <b>cloned</b> this repo, just run the sample.py and you can see the fine result. This code sample is for the people who installed this with <b>pip</b>.
 ```python
-from PyQt5.QtWidgets import QGridLayout, QPushButton, QApplication
-from pyqt_windows_os_light_dark_theme_window import Window
+from PyQt5.QtWidgets import QPushButton, QGridLayout, QApplication
+
+from pyqt_windows_os_light_dark_theme_window.main import Window
 
 
 class MainWindow(Window):
@@ -38,9 +42,19 @@ class MainWindow(Window):
         self.__initUi()
 
     def __initUi(self):
+        btn = QPushButton('Theme Toggle')
+        btn.setCheckable(True)
+        btn.toggled.connect(self.__themeToggled)
         lay = QGridLayout()
-        lay.addWidget(QPushButton('ABC'))
+        lay.addWidget(btn)
         self.setLayout(lay)
+        self.changedToDark.connect(self.__darkThemeOn)
+
+    def __themeToggled(self, f):
+        self.setDarkTheme(f)
+
+    def __darkThemeOn(self, f):
+        print(f'Is current theme dark?: {f}')
 
 
 if __name__ == "__main__":
