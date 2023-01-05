@@ -57,6 +57,19 @@ class Window(QWidget):
         self.__dwmSetWindowAttribute(int(self.winId()), DWMWINDOWATTRIBUTE.DWMWA_USE_IMMERSIVE_DARK_MODE.value,
                                      byref(c_bool(f)), sizeof(BOOL))
         self.changedToDark.emit(f)
+        if self.isMaximized() or self.isFullScreen() or self.maximumWidth() == self.width():
+            if self.isMaximized():
+                self.showNormal()
+                self.showMaximized()
+            elif self.isFullScreen():
+                self.showNormal()
+                self.showFullScreen()
+            elif self.maximumWidth() == self.width():
+                self.resize(self.width()-1, self.height())
+                self.resize(self.width()+1, self.height())
+        else:
+            self.resize(self.width()+1, self.height())
+            self.resize(self.width()-1, self.height())
 
     def isDetectingThemeAllowed(self):
         return self.__detect_theme_flag
